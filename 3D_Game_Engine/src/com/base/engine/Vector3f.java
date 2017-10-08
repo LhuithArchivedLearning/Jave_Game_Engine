@@ -34,6 +34,15 @@ public class Vector3f
 		return this;
 	}
 	
+	public Vector3f cross(Vector3f r)
+	{
+		float _x = y * r.getZ() - z * r.getY();
+		float _y = z * r.getX() - x * r.getZ();
+		float _z = x * r.getY() - y * r.getX();
+		
+		return new Vector3f(_x, _y, _z);
+	}
+	
 	public Vector3f rotate()
 	{
 		return null;

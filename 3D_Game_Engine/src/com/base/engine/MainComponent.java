@@ -12,6 +12,8 @@ public class MainComponent
 	
 	public MainComponent()
 	{
+		System.out.println(RenderUtil.getOpenGLVersion());
+		RenderUtil.initGraphics();
 		isRunning = false;
 		game = new Game();
 	}
@@ -99,6 +101,7 @@ public class MainComponent
 	
 	private void Render()
 	{
+		RenderUtil.clearScreen();
 		game.Render();
 		Window.render();
 	}

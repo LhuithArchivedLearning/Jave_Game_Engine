@@ -4,24 +4,41 @@ import org.lwjgl.input.Keyboard;
 
 public class Game 
 {
+	private Mesh mesh;
+	private Shader shader;
+	
+	
 	public Game()
 	{
+		mesh = new Mesh();
+		shader = new Shader();
 		
+		Vertex[] data = new Vertex[] {
+				new Vertex(new Vector3f(-1, -1, +0)),
+                new Vertex(new Vector3f(+0, +1, +0)),
+			    new Vertex(new Vector3f(1, -1, +0))};
+		
+		mesh.AddVertices(data);
+
+		shader.AddVertexShader(ResourceLoader.loadShader("basic.vs.glsl"));	
+		shader.AddFragmentShader(ResourceLoader.loadShader("basic.fs.glsl"));
+
+		shader.compileShader();
 	}
 	
 	public void Input()
 	{
-		if(Input.getKeyDown(Keyboard.KEY_UP))
+		if(Input.GetKeyDown(Keyboard.KEY_UP))
 			System.out.println("We just pressed Up!!!");
 		
-		if(Input.getKeyUp(Keyboard.KEY_UP))
+		if(Input.GetKeyUp(Keyboard.KEY_UP))
 			System.out.println("We just Released Up!!!");
 		
 		
-		if(Input.getMouseDown(0))
-			System.out.println("We just pressed LeftMouseButton!!!" + Input.getMousePosition().toString());
+		if(Input.GetMouseDown(0))
+			System.out.println("We just pressed LeftMouseButton!!!" + Input.GetMousePosition().toString());
 		
-		if(Input.getMouseUp(0))
+		if(Input.GetMouseUp(0))
 			System.out.println("We just released LeftMouseButton!!!");
 	}
 	
@@ -32,6 +49,7 @@ public class Game
 	
 	public void Render()
 	{
-		
+		shader.bind();
+		mesh.draw();
 	}
 }
