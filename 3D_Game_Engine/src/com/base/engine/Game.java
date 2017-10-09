@@ -8,24 +8,10 @@ public class Game
 	private Shader shader;
 	private Transform transform;
 	
-	
 	public Game()
 	{
 		mesh = ResourceLoader.loadMesh("Cube.obj");//new Mesh();
 		shader = new Shader();
-		
-	//	Vertex[] vertices = new Vertex[] {
-////				new Vertex(new Vector3f(-1, -1, +0)),
-  //              new Vertex(new Vector3f(+0, +1, +0)),
-	//		    new Vertex(new Vector3f(1, -1, +0)),
-	//		    new Vertex(new Vector3f(0, -1, 1))};
-	//	
-	//	int[] indices = new int[] {0, 1, 3, 
-	//							   3, 1, 2, 
-	///							   2, 1, 0,
-	//							   0, 2, 3};
-		
-	//	mesh.AddVertices(vertices, indices);
 		
 		transform = new Transform();
 		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000);
@@ -36,6 +22,8 @@ public class Game
 		shader.compileShader();
 		
 		shader.AddUniform("transform");
+	
+		
 	}
 	
 	public void Input()

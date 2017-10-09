@@ -1,6 +1,12 @@
 package com.base.engine;
+import java.awt.Canvas;
+import javax.swing.JOptionPane;
+import javax.xml.crypto.Data;
 
-public class MainComponent 
+import com.base.net.GameClient;
+import com.base.net.GameServer;
+
+public class MainComponent extends Canvas
 {
 	public static final int WIDTH = 800;
 	public static final int HEIGHT = 600;
@@ -10,20 +16,35 @@ public class MainComponent
 	private boolean isRunning;
 	private Game game;
 	
+	public GameServer socketServer;
+	public GameClient socketClient;
+	
 	public MainComponent()
 	{
 		System.out.println(RenderUtil.getOpenGLVersion());
 		RenderUtil.initGraphics();
+		
+		if(JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0)
+		{
+			socketServer = new GameServer(this);
+			socketServer.start();
+		}
+			socketClient = new GameClient(this,"localHost");
+			socketClient.start();		
+			
 		isRunning = false;
 		game = new Game();
 	}
 	
 	public void Start()
 	{
+		socketClient.sendData("Shlong".getBytes());
+		
 		if(isRunning)
 			return;
 		
-		Run();
+		Run();		
+		
 	}
 	
 	public void Stop()
@@ -74,7 +95,7 @@ public class MainComponent
 				
 				if(frameCounter >= Time.SECOND)
 				{
-					System.out.println(frames);
+					//System.out.println(frames);
 					frames = 0;
 					frameCounter = 0;
 				}
@@ -91,7 +112,6 @@ public class MainComponent
 				} 
 				catch (InterruptedException e) 
 				{
-					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
 		}
