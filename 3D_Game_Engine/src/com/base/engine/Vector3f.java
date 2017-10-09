@@ -43,11 +43,20 @@ public class Vector3f
 		return new Vector3f(_x, _y, _z);
 	}
 	
-	public Vector3f rotate()
+	public Vector3f rotate(float angle, Vector3f axis)
 	{
+		float sinHalfAngle = (float)Math.sin(Math.toRadians(angle/2));
+		float cosHalfAngle = (float)Math.cos(Math.toRadians(angle/2));
+		
+		float rx;
+		float ry;
+		float rz;
+		float rw;
+		
+		
 		return null;
 	}
-	
+
 	public Vector3f add(Vector3f r)
 	{
 		return new Vector3f(x + r.getX(), y + r.getY(), z + r.getZ());
