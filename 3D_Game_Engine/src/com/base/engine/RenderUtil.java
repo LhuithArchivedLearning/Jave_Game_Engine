@@ -37,11 +37,8 @@ public class RenderUtil
 		
 		glEnable(GL_DEPTH_TEST);
 		
-		//TODO: Depth Clamp for later
-		
-		//Look into too
+		//glEnable(GL_DEPTH_CLAMP);
 		glEnable(GL_TEXTURE_2D);
-		glEnable(GL_FRAMEBUFFER_SRGB);
 	}
 	
 	public static String getOpenGLVersion()
