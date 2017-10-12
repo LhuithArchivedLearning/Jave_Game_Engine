@@ -19,14 +19,38 @@ public class Camera
 		this.forward = forward;
 		this.up = up;
 		
-		up.normalize();
-		forward.normalize();
+		up.normalized();
+		forward.normalized();
 	}
+	
+	boolean mouseLocked = false;
+	Vector2f centrePosition = new Vector2f(Window.getWidth()/2, Window.GetHeight()/2);
 	
 	public void input ()
 	{
+		float sensitivity = 0.25f;
 		float moveAmt = (float)(10 * Time.getDelta());
-		float rotAmt = (float)(100* Time.getDelta());
+		//float rotAmt = (float)(100* Time.getDelta());
+		
+		if(Input.GetKey(Input.KEY_ESCAPE))
+		{
+			Input.SetCursor(true);
+			mouseLocked = false;
+		}
+		if(Input.GetMouseDown(0))
+		{
+			Input.SetMousePosition(centrePosition);
+			Input.SetCursor(false);
+			mouseLocked = true;
+		}
+		
+		if(Input.GetMouseUp(0))
+		{
+			Input.SetMousePosition(centrePosition);
+			Input.SetCursor(true);
+			mouseLocked = false;
+		}
+		
 		
 		if(Input.GetKey(Input.KEY_W))
 			move(getForward(), moveAmt);
@@ -37,15 +61,32 @@ public class Camera
 		if(Input.GetKey(Input.KEY_D))
 			move(getRight(), moveAmt);
 			
-		if(Input.GetKey(Input.KEY_UP))
-			rotateX(-rotAmt);		
-		if(Input.GetKey(Input.KEY_DOWN))
-			rotateX(rotAmt);
 		
-		if(Input.GetKey(Input.KEY_LEFT))
-			rotateY(-rotAmt);
-		if(Input.GetKey(Input.KEY_RIGHT))
-			rotateY(rotAmt);
+		if(mouseLocked)
+		{
+			Vector2f deltaPos = Input.GetMousePosition().sub(centrePosition);
+			
+			boolean rotY = deltaPos.getX() != 0;
+			boolean rotX = deltaPos.getY() != 0;
+			
+			if(rotY)
+				rotateY(deltaPos.getX() * sensitivity);
+			if(rotX)
+				rotateX(-deltaPos.getY() * sensitivity);
+			
+			
+			if(rotY || rotX)
+				Input.SetMousePosition(new Vector2f(Window.getWidth()/2, Window.GetHeight()/2));
+		}
+//		if(Input.GetKey(Input.KEY_UP))
+//			rotateX(-rotAmt);		
+//		if(Input.GetKey(Input.KEY_DOWN))
+//			rotateX(rotAmt);
+//		
+//		if(Input.GetKey(Input.KEY_LEFT))
+//			rotateY(-rotAmt);
+//		if(Input.GetKey(Input.KEY_RIGHT))
+//			rotateY(rotAmt);
 			
 	}
 	public void move(Vector3f dir, float amt)
@@ -55,41 +96,31 @@ public class Camera
 
 	public void rotateY(float angle)
 	{
-		Vector3f Haxis = yAxis.cross(forward);
+		Vector3f Haxis = yAxis.cross(forward).normalized();
 		
-		forward.rotate(angle, yAxis);
-		forward.normalize();
+		forward = forward.rotate(angle, yAxis).normalized();
 		
-		up = forward.cross(Haxis);
-		up.normalize();
+		up = forward.cross(Haxis).normalized();
 	}
 	
 	public void rotateX(float angle)
 	{
-		Vector3f Haxis = yAxis.cross(forward);
+		Vector3f Haxis = yAxis.cross(forward).normalized();
 		
-		Haxis.normalize();
-		
-		forward.rotate(angle, Haxis);
-		forward.normalize();
-		
-		up = forward.cross(Haxis);
-		up.normalize();
+		forward = forward.rotate(angle, Haxis).normalized();
+
+		up = forward.cross(Haxis).normalized();
 	}
 	
 	
 	public Vector3f getLeft()
 	{
-		Vector3f left = forward.cross(up);		
-		left.normalize();		
-		return left;
+		return forward.cross(up).normalized();
 	}
 	
 	public Vector3f getRight()
 	{
-		Vector3f right = up.cross(forward);
-		right.normalize();
-		return right;
+		return up.cross(forward).normalized();
 	}
 	
 	public Vector3f getPos() {

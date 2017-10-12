@@ -4,23 +4,22 @@ public class Game
 {
 	private Mesh mesh;
 	private Shader shader;
+	private Material material;
 	private Transform transform;
-	private Texture texture;
 	private Camera camera;
 	
 	public Game()
 	{
 		mesh = new Mesh(); //ResourcesLoad.loadMesh("cube.obj");
-		
-		shader = new Shader();
 		camera = new Camera();
-		
+		material = new Material(null, new Vector3f(0.0f, 1.0f, 1.0f) );
+		shader = PhongShader.getInstance();
 		Vertex[] vertices = new Vertex[]
 				{
-						new Vertex(new Vector3f(-1, -1, 0)),
-						new Vertex(new Vector3f(0, 1, 0)),
-						new Vertex(new Vector3f(1, -1, 0)),
-						new Vertex(new Vector3f(0, -1, 1)),
+						new Vertex(new Vector3f(-1, -1, 0), new Vector2f(0,0)),
+						new Vertex(new Vector3f(0, 1, 0), new Vector2f(0.5f,0)),
+						new Vertex(new Vector3f(1, -1, 0), new Vector2f(1.0f,0)),
+						new Vertex(new Vector3f(0, -1, 1), new Vector2f(0,0.5f)),
 				};
 		int[] indices = new int[] {3, 1, 0,
 								   2, 1, 3,
@@ -33,15 +32,6 @@ public class Game
 		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000);
 		Transform.setCamera(camera);
 		transform = new Transform();
-		
-
-		shader.AddVertexShader(ResourceLoader.loadShader("basic.vs.glsl"));	
-		shader.AddFragmentShader(ResourceLoader.loadShader("basic.fs.glsl"));
-
-		
-		shader.compileShader();
-		
-		shader.AddUniform("transform");
 	
 	}
 	
@@ -66,8 +56,9 @@ public class Game
 	
 	public void Render()
 	{
+		RenderUtil.setClearColor(Transform.getCamera().getPos().div(2048f).abs());
 		shader.bind();
-		shader.setUniform("transform", transform.getProjectedTransformation());
+		shader.updateUniforms(transform.getTransformation(), transform.getProjectedTransformation(), material);
 		mesh.draw();
 	}
 }

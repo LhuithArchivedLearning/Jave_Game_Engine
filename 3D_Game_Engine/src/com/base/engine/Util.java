@@ -37,6 +37,8 @@ public class Util
 			buffer.put(vertices[i].getPos().getX());
 			buffer.put(vertices[i].getPos().getY());
 			buffer.put(vertices[i].getPos().getZ());
+			buffer.put(vertices[i].getTexCoord().getX());
+			buffer.put(vertices[i].getTexCoord().getY());
 		}
 		
 		buffer.flip();
@@ -52,7 +54,7 @@ public class Util
 		{
 			for(int j = 0; j < 4; j++)
 			{
-				buffer.put(value.get(i, j));
+				buffer.put(value.Get(i, j));
 			}
 		}
 		

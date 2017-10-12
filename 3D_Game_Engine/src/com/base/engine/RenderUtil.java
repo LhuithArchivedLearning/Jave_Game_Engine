@@ -9,6 +9,16 @@ public class RenderUtil
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 	
+	public static void unbindTextures()
+	{
+		glBindTexture(GL_TEXTURE_2D, 0);
+	}
+	
+	public static void setClearColor(Vector3f color)
+	{
+		glClearColor(color.getX(), color.getY(), color.getZ(), 1.0f);
+	}
+	
 	public static void setTexture(boolean enabled)
 	{
 		if(enabled)
