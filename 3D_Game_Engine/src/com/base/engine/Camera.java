@@ -37,14 +37,14 @@ public class Camera
 			Input.SetCursor(true);
 			mouseLocked = false;
 		}
-		if(Input.GetMouseDown(0))
+		if(Input.GetMouseDown(1))
 		{
 			Input.SetMousePosition(centrePosition);
 			Input.SetCursor(false);
 			mouseLocked = true;
 		}
 		
-		if(Input.GetMouseUp(0))
+		if(Input.GetMouseUp(1))
 		{
 			Input.SetMousePosition(centrePosition);
 			Input.SetCursor(true);

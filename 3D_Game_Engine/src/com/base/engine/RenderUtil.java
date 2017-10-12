@@ -1,6 +1,8 @@
 package com.base.engine;
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL32.GL_DEPTH_CLAMP;
 import static org.lwjgl.opengl.GL30.*;
+
 public class RenderUtil 
 {
 	public static void clearScreen()
@@ -37,7 +39,7 @@ public class RenderUtil
 		
 		glEnable(GL_DEPTH_TEST);
 		
-		//glEnable(GL_DEPTH_CLAMP);
+	    glEnable(GL_DEPTH_CLAMP);
 		glEnable(GL_TEXTURE_2D);
 	}
 	
