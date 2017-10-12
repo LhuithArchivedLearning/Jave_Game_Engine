@@ -9,6 +9,14 @@ public class RenderUtil
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	}
 	
+	public static void setTexture(boolean enabled)
+	{
+		if(enabled)
+			glEnable(GL_TEXTURE_2D);
+		else
+			glDisable(GL_TEXTURE_2D);
+	}
+	
 	public static void initGraphics()
 	{
 		glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
@@ -22,6 +30,7 @@ public class RenderUtil
 		//TODO: Depth Clamp for later
 		
 		//Look into too
+		glEnable(GL_TEXTURE_2D);
 		glEnable(GL_FRAMEBUFFER_SRGB);
 	}
 	

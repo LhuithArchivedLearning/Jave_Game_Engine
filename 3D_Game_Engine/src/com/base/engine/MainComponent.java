@@ -16,21 +16,21 @@ public class MainComponent extends Canvas
 	private boolean isRunning;
 	private Game game;
 	
-	public GameServer socketServer;
-	public GameClient socketClient;
-	
+//	public GameServer socketServer;
+//	public GameClient socketClient;
+
 	public MainComponent()
 	{
 		System.out.println(RenderUtil.getOpenGLVersion());
 		RenderUtil.initGraphics();
 		
-		if(JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0)
-		{
-			socketServer = new GameServer(this);
-			socketServer.start();
-		}
-			socketClient = new GameClient(this,"localHost");
-			socketClient.start();		
+//		if(JOptionPane.showConfirmDialog(this, "Do you want to run the server") == 0)
+//		{
+//			socketServer = new GameServer(this);
+//			socketServer.start();
+//		}
+//			socketClient = new GameClient(this,"localHost");
+//			socketClient.start();		
 			
 		isRunning = false;
 		game = new Game();
@@ -38,7 +38,7 @@ public class MainComponent extends Canvas
 	
 	public void Start()
 	{
-		socketClient.sendData("Shlong".getBytes());
+	//	socketClient.sendData("Shlong".getBytes());
 		
 		if(isRunning)
 			return;
@@ -88,14 +88,14 @@ public class MainComponent extends Canvas
 					Stop();
 				
 				Time.setDelta(frameTime);
-				Input.Update();
 				
 				game.Input();
+				Input.Update();
 				game.Update();
 				
 				if(frameCounter >= Time.SECOND)
 				{
-					//System.out.println(frames);
+					System.out.println(frames);
 					frames = 0;
 					frameCounter = 0;
 				}
