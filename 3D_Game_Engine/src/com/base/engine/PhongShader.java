@@ -16,12 +16,13 @@ public class PhongShader extends Shader
 	private static DirectionalLight directionalLight = new DirectionalLight(new BaseLight(new Vector3f(1,1,1), 0), new Vector3f(0,0,0));
 	private static PointLight[] pointLights = new PointLight[]{};
 	private static SpotLight[] spotLights = new SpotLight[]{};
+	
 	public PhongShader()
 	{
 		super();
 		
-		AddVertexShader(ResourceLoader.loadShader("phong.vs.glsl"));	
-		AddFragmentShader(ResourceLoader.loadShader("phong.fs.glsl"));
+		AddVertexShaderFromFile("phong.vs.glsl");	
+		AddFragmentShaderFromFile("phong.fs.glsl");
 		compileShader();
 		
 		AddUniform("transform");

@@ -11,6 +11,11 @@ public class Texture
 {
 	private int id;
 	
+	public Texture(String fileName)
+	{
+		this(LoadTexture(fileName));
+	}
+	
 	public Texture(int id)
 	{
 		this.id = id;
@@ -26,16 +31,15 @@ public class Texture
 		return id;
 	}
 	
-	public static Texture LoadTexture(String fileName)
+	private static int LoadTexture(String fileName)
 	{
 		String[] splitArray = fileName.split("\\.");
 		String ext = splitArray[splitArray.length - 1];
 		
 		try
 		{
-			int id = TextureLoader.getTexture(ext, new FileInputStream(new File("./res/textures/" + fileName))).getTextureID();
-			
-			return new Texture(id);
+			int id = TextureLoader.getTexture(ext, new FileInputStream(new File("./res/textures/" + fileName))).getTextureID();			
+			return id;
 		}
 		catch(Exception e)
 		{
@@ -43,7 +47,7 @@ public class Texture
 			System.exit(1);
 		}
 		
-		return null;
+		return 0;
 	}
 	
 }

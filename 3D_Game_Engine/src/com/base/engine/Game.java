@@ -16,9 +16,8 @@ public class Game
 	
 	public Game()
 	{
-		mesh = new Mesh(); //ResourcesLoad.loadMesh("cube.obj");
 		camera = new Camera();
-		material = new Material(ResourceLoader.LoadTexture("test.png"), new Vector3f(1.0f, 1.0f, 1.0f), 1, 8);
+		material = new Material(new Texture("test.png"), new Vector3f(1.0f, 1.0f, 1.0f), 1, 8);
 		shader = PhongShader.getInstance();
 		transform = new Transform();
 		
@@ -53,7 +52,7 @@ public class Game
 //								   1, 2, 0
 //		};
 		
-		mesh.AddVertices(vertices, indices, true);
+		mesh = new Mesh(vertices, indices, true);
 		
 		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000);
 		Transform.setCamera(camera);
@@ -61,7 +60,7 @@ public class Game
 		PhongShader.setAmbientLight(new Vector3f(0.1f,0.1f,0.1f));
 		//PhongShader.setDirectionalLight( new DirectionalLight(new BaseLight(new Vector3f(1,1,1), 0.8f), new Vector3f(1,1,1)));
 		
-		//PhongShader.setPointLight(new PointLight[]{pLight1, pLight2});
+		PhongShader.setPointLights(new PointLight[]{pLight1, pLight2});
 		PhongShader.setSpotLights(new SpotLight[]{sLight1});
 	}
 	
@@ -83,8 +82,8 @@ public class Game
 		//transform.setRotation(0, sinTemp * 180, 0);
 		sLight1.getPointLight().setPosition(camera.getPos());
 		sLight1.setDirection(camera.getForward());
-		//pLight1.setPosition(new Vector3f(3, 0, 8.0f * (float)Math.sin(temp) + 1.0f/2.0f + 10));
-		//pLight2.setPosition(new Vector3f(7, 0, 8.0f * (float)Math.cos(temp) + 1.0f/2.0f + 10));
+		pLight1.setPosition(new Vector3f(3, 0, 8.0f * (float)Math.sin(temp) + 1.0f/2.0f + 10));
+		pLight2.setPosition(new Vector3f(7, 0, 8.0f * (float)Math.cos(temp) + 1.0f/2.0f + 10));
 	}
 	
 	
