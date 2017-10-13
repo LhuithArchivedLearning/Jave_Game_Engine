@@ -1,0 +1,36 @@
+package com.base.engine;
+
+public class Matrix4f 
+{
+	private float[][] m;
+	
+	public Matrix4f()
+	{
+		m = new float[4][4];
+	}
+	
+	public void initIdentity()
+	{
+		m[0][0] = 1; m[0][1] = 0; m[0][2] = 0; m[0][3] = 0;
+	}
+	
+	public float[][] getM() {
+		return m;
+	}
+
+	public float get(int x, int y)
+	{
+		return m[x][y];
+	}
+	
+	public void setM(float[][] m) {
+		this.m = m;
+	}
+	
+	public void set(int x, int y, float val)
+	{
+		m[x][y] = val;
+	}
+	
+	
+}

@@ -1,0 +1,25 @@
+package com.base.engine;
+
+import org.lwjgl.input.Keyboard;
+
+public class Game 
+{
+	public Game()
+	{
+		
+	}
+	
+	public void Input()
+	{
+	}
+	
+	public void Update()
+	{
+		
+	}
+	
+	public void Render()
+	{
+		
+	}
+}

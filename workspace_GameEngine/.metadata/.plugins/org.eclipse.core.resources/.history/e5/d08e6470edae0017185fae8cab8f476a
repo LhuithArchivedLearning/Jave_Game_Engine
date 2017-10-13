@@ -1,0 +1,17 @@
+package com.base.engine;
+
+public class BasicShader extends Shader
+{
+	public BasicShader()
+	{
+		super();
+		
+		
+
+		AddVertexShader(ResourceLoader.loadShader("basic.vs.glsl"));	
+		AddFragmentShader(ResourceLoader.loadShader("basic.fs.glsl"));
+		compileShader();
+		
+		AddUniform("transform");
+	}
+}

@@ -1,0 +1,12 @@
+package com.base.engine;
+
+public class Material 
+{
+	private Texture texture;
+	private Vector3f color;
+	
+	public Material
+	{
+		
+	}
+}

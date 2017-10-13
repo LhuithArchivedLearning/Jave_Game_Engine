@@ -1,0 +1,23 @@
+package com.base.engine;
+
+public class BasicShader extends Shader
+{
+	public BasicShader()
+	{
+		super();
+		
+		AddVertexShader(ResourceLoader.loadShader("basic.vs.glsl"));	
+		AddFragmentShader(ResourceLoader.loadShader("basic.fs.glsl"));
+		compileShader();
+		
+		AddUniform("transform");
+		AddUniform("color");
+	}
+	
+	
+	public void updateUniforms(Matrix4f worldMatrix, Matrix4f projectedMatrix,  Material material)
+	{
+		setUniform("transform", projectedMatrix);
+		
+	}
+}
