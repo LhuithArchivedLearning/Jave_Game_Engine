@@ -1,4 +1,30 @@
+||RENDERING ENGINE||
+||UI  ENGINE||
+||PHYSICS ENGINE||
+
 -Some way to insert game into engine
-UI - 
+-Better Scratchpad support
+-Better textires[reading, blitting, basic image processing]
+-Some way to seperate game and engine data
+
+-Add Higher level rendering construct(Shaders, Materials, Meshes, Transform)
+-Add some form of auto shader select
+-Add some form of primitives(Squares, Recangles, Spheres)
+-More flexible Transform class (defualt values for projection and camera)
+-Non perspective Views, Orthogonal views
+-Texture Minipulation (Translation, Rotation, Scale)
+-More Control over Textures (Filtering, Formating)
+-More Freindly Constructors
+-Window should have more properties(Centre pos, Fullscreen, maybe mouse locking)
+-better vector math (normilization, +=, Common used Vector Constants, swizzling support)
+-Options class/system some place to read values that the player chooses
+-Centralized "level or Scene " class that holds the data the game is using
+-Game object class
+-Make all positioning names "position"
+-Make naming more consistant
+-Vector Swizzling
+
+-Eventually make easier way of generating way
+-Eventually make easy way to generate texCoords
 Physics,Collisio -
-Render Engine -
+

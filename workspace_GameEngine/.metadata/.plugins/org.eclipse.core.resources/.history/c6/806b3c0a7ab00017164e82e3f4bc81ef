@@ -1,0 +1,34 @@
+package com.base.engine;
+
+public class Game 
+{	
+	private Level level;
+	private Player player;
+	
+	public Game()
+	{	
+		Transform.setCamera(new Camera());
+		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000f);	
+		level = new Level("Wolf-3D_Level_0.png", "WolfySteenCollection.png");
+		player = new Player(new Vector3f(0,0,0));
+	}	
+	
+	public void Input()
+	{	
+		level.input();
+		player.input();
+		
+		Transform.getCamera().input();
+	}	
+	
+	public void Update()
+	{	
+		level.update();
+		player.update();
+	}	
+	
+	public void Render()
+	{
+		level.render();
+	}
+}

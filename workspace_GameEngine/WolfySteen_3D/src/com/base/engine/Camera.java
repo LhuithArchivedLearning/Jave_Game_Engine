@@ -29,7 +29,7 @@ public class Camera
 	public void input ()
 	{
 		float sensitivity = 0.25f;
-		float moveAmt = (float)(10 * Time.getDelta());
+		float moveAmt = (float)(2.5 * Time.getDelta());
 		//float rotAmt = (float)(100* Time.getDelta());
 		
 		if(Input.GetKey(Input.KEY_ESCAPE))

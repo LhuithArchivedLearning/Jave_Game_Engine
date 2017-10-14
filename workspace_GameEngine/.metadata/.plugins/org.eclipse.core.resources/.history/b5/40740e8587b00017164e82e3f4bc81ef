@@ -1,0 +1,55 @@
+package com.base.engine;
+
+public class Door 
+{
+	
+	private static final float DOOR_LENGTH = 1;
+	private static final float DOOR_HEIGHT = 1;
+	private static final float DOOR_WIDTH = 0.125f;
+	
+	private static Mesh mesh;
+	private Material material;
+	private Transform transform;
+	
+	public Door(Transform transform, Material material)
+	{
+		this.material = material;
+		this.transform = transform;
+		if(mesh == null)
+		{
+			Vertex[] vertices = new Vertex[]
+					{
+							new Vertex(new Vector3f(0,0,0), new Vector2f(0,0)),
+							new Vertex(new Vector3f(0, DOOR_HEIGHT,0), new Vector2f(0,0)),
+							new Vertex(new Vector3f(DOOR_LENGTH, DOOR_HEIGHT,0), new Vector2f(0,0)),
+							new Vertex(new Vector3f(DOOR_LENGTH,0,0), new Vector2f(0,0)),
+							
+							new Vertex(new Vector3f(0,0,0), new Vector2f(0,0)),
+							new Vertex(new Vector3f(0,DOOR_HEIGHT,0), new Vector2f(0,0)),
+							new Vertex(new Vector3f(0,DOOR_HEIGHT,1), new Vector2f(0,0)),
+							new Vertex(new Vector3f(1,0,0), new Vector2f(0,0)),
+					};
+			
+			int[] indices = new int []{0, 1, 2,
+									   0, 2, 3};
+			
+			mesh = new Mesh(vertices, indices);
+			//TODO: create door mesh
+		}
+	}
+	
+	public void update()
+	{
+		
+	}
+	
+	public void render()
+	{
+		Shader shader = Game.getLevel().getShader();
+		shader.updateUniforms(transform.getTransformation(), transform.getProjectedTransformation(), material);
+		//TODO Bind/update shader
+		mesh.draw();
+	}
+	
+	
+}

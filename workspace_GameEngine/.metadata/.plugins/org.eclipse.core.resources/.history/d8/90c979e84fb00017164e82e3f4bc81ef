@@ -1,0 +1,38 @@
+package com.base.engine;
+
+import java.util.ArrayList;
+
+public class Game 
+{
+	Bitmap level;
+	Shader shader;
+	Material material;
+	Mesh mesh;
+	Transform transform;
+	
+	private static final float SPOT_WIDTH = 1;
+	private static final float SPOT_LENGTH = 1;
+	private static final float SPOT_HEIGHT = 1;
+	
+	private static final int NUM_TEX_EXP = 4;
+	private static final int NUM_TEXTURES = (int)Math.pow(2, NUM_TEX_EXP);
+	
+	public Game()
+	{	
+		Transform.setCamera(new Camera());
+		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000f);	
+	}	
+	
+	public void Input()
+	{	
+	}	
+	
+	public void Update()
+	{		
+		Transform.getCamera().input();
+	}	
+	
+	public void Render()
+	{
+	}
+}

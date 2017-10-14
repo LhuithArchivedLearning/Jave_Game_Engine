@@ -6,10 +6,13 @@
 <fullyQualifiedTypeName name="org.lwjgl.BufferUtils"/>
 <fullyQualifiedTypeName name="com.base.engine.Vertex"/>
 <fullyQualifiedTypeName name="java.io.BufferedReader"/>
-<fullyQualifiedTypeName name="java.io.File"/>
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="org.lwjgl.opengl.GL20"/>
 <fullyQualifiedTypeName name="javax.xml.crypto.Data"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.base.engine.Vector3f"/>
 </qualifiedTypeNameHistroy>
