@@ -23,6 +23,15 @@
 -Make all positioning names "position"
 -Make naming more consistant
 -Vector Swizzling
+-Make all time based on seconds rather then nanoseconds
+-Gives vectors a copy constructor
+-Give vectors an interpolation method
+-Transparancy Support
+-Sprite support
+-Good way to compare vectors
+-Vector2f cross product
+-Display Text
+
 
 -Eventually make easier way of generating way
 -Eventually make easy way to generate texCoords

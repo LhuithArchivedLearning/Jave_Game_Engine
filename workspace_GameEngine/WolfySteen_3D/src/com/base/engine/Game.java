@@ -3,37 +3,50 @@ package com.base.engine;
 public class Game 
 {	
 	private static Level level;
-	private Player player;
+	private static boolean isRunning;
+	private static int levelNum = 0;
 	
 	public Game()
-	{	
-		level = new Level("Wolf-3D_Level_0.png", "WolfySteenCollection.png");
-		player = new Player(new Vector3f(4.256394f,0.4375f,10f));
-		
-		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000f);	
-		Transform.setCamera(player.getCamera());
+	{			
+		loadNextLevel();
 	}	
 	
 	public void Input()
 	{	
 		level.input();
-		player.input();
 	}	
 	
 	public void Update()
 	{	
-		level.update();
-		player.update();
+		if(isRunning)
+			level.update();
 	}	
 	
 	public void Render()
 	{
-		level.render();
-		player.render();
+		if(isRunning)
+			level.render();
+	}
+	
+	public static void loadNextLevel()
+	{
+		levelNum ++;
+		level = new Level("Wolf-3D_Level_" + levelNum + ".png", "WolfySteenCollection.png");
+			
+		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000f);	
+		Transform.setCamera(level.getPlayer().getCamera());
+		isRunning = true;
 	}
 	
 	public static Level getLevel()
 	{
 		return level;
 	}
+	
+	public static void setIsRunning(boolean value)
+	{
+		isRunning = value;
+	}
+	
+	
 }

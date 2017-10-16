@@ -1,0 +1,53 @@
+package com.base.engine;
+
+public class Game 
+{	
+	private static Level level;
+	private static boolean isRunning;
+	private static int levelNum = 0;
+	
+	public Game()
+	{			
+		loadNextLevel();
+		
+		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000f);	
+		Transform.setCamera(level.getPlayer().getCamera());
+		isRunning = true;
+	}	
+	
+	public void Input()
+	{	
+		level.input();
+	}	
+	
+	public void Update()
+	{	
+		if(isRunning)
+			level.update();
+	}	
+	
+	public void Render()
+	{
+		if(isRunning)
+			level.render();
+	}
+	
+	public static void loadNextLevel()
+	{
+		levelNum ++;
+		System.out.println("Wolf-3D_Level_" + levelNum + ".png");
+		level = new Level("Wolf-3D_Level_" + levelNum + ".png", "WolfySteenCollection.png");
+	}
+	
+	public static Level getLevel()
+	{
+		return level;
+	}
+	
+	public static void setIsRunning(boolean value)
+	{
+		isRunning = value;
+	}
+	
+	
+}

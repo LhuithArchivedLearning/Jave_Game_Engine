@@ -1,0 +1,26 @@
+package com.base.engine;
+
+public class MedKit 
+{
+	private static Mesh mesh;
+	
+	public MedKit(Vector3f pos)
+	{
+		if(mesh == null)
+		{
+			Vertex[] vertices = new Vertex[]
+					{
+							new Vertex(new Vector3f(-SIZEX,START,START),  new Vector2f(TEX_MAX_X, TEX_MAX_Y)),
+							new Vertex(new Vector3f(-SIZEX, SIZEY,START), new Vector2f(TEX_MAX_X,TEX_MIN_Y)),
+							new Vertex(new Vector3f(SIZEX, SIZEY,START),  new Vector2f(TEX_MIN_X, TEX_MIN_Y)),
+							new Vertex(new Vector3f(SIZEX,START,START),   new Vector2f(TEX_MIN_X, TEX_MAX_Y)),
+					};
+			
+			int[] indices = new int []{0, 1, 2,
+									   0, 2, 3,};
+
+			mesh = new Mesh(vertices, indices);
+		}
+		
+	}
+}

@@ -1,0 +1,11 @@
+package com.base.engine;
+
+public class Monster 
+{
+	private static Mesh mesh;
+	
+	public Monster(Transform transform)
+	{
+		
+	}
+}

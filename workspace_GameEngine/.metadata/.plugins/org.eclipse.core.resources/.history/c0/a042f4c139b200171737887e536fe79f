@@ -1,0 +1,9 @@
+package com.base.engine;
+
+public class MedKit 
+{
+	public MedKit(Vector3f pos)
+	{
+		
+	}
+}

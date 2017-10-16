@@ -1,0 +1,10 @@
+package com.base.engine;
+
+public class Monster 
+{
+	
+	public Monster(Transform transform, Material material, Vector3f openPosition)
+	{
+		
+	}
+}
