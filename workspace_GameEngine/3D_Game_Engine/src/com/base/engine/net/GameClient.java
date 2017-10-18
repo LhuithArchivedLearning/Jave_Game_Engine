@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import com.base.engine.core.MainComponent;
+import com.base.engine.core.CoreEngine;
 
 public class GameClient extends Thread
 {
@@ -19,9 +19,9 @@ public class GameClient extends Thread
 	
 	private InetAddress ipAddress;
 	private DatagramSocket socket;
-	private MainComponent mc;
+	private CoreEngine mc;
 	
-	public GameClient(MainComponent mc, String ipAddress)
+	public GameClient(CoreEngine mc, String ipAddress)
 	{
 		this.mc = mc;
 		

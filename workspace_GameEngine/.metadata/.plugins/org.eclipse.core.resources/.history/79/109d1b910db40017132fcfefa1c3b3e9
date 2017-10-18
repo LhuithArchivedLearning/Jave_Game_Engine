@@ -1,0 +1,15 @@
+package com.base.engine.core;
+
+public abstract class GameComponent 
+{
+	public void init(){}
+	
+	public void input(Transform transform)
+	{
+		
+	}
+	
+	public void update(){}
+	
+	public void render(){}
+}

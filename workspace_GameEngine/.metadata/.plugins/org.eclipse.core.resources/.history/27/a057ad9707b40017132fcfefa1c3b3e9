@@ -1,0 +1,9 @@
+package com.base.game;
+
+public class Main 
+{
+	public static void main(String[] args)
+	{
+		CoreEngine engine = new CoreEngine(800, 600, 60);
+	}
+}

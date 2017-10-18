@@ -1,0 +1,21 @@
+package com.base.game;
+
+import com.base.engine.core.GameComponent;
+import com.base.engine.core.Transform;
+
+public class MeshRenderer extends GameComponent
+{
+	private Material material;
+	private Mesh mesh;
+	
+	public MeshRenderer(Mesh mesh, Material material)
+	{
+		
+	}
+	
+	public void render(Transform transform)
+	{
+		
+		
+	}
+}

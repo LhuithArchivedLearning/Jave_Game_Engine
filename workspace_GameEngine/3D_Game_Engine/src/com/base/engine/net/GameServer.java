@@ -7,14 +7,14 @@ import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
 
-import com.base.engine.core.MainComponent;
+import com.base.engine.core.CoreEngine;
 
 public class GameServer extends Thread
 {
 
 		private DatagramSocket socket;
-		private MainComponent mc;
-		public GameServer(MainComponent mc)
+		private CoreEngine mc;
+		public GameServer(CoreEngine mc)
 		{
 			this.mc = mc;
 			

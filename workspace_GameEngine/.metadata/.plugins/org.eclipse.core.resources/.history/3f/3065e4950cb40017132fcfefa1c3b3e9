@@ -1,0 +1,43 @@
+package com.base.engine.core;
+
+import java.util.ArrayList;
+
+public class GameObject 
+{
+	private ArrayList<GameObject> children;
+	private ArrayList<GameComponent> components;
+	
+	public GameObject()
+	{
+		children = new ArrayList<GameObject>();
+		components = new ArrayList<GameComponent>();
+	}
+	
+	public void addChild(GameObject child)
+	{
+		children.add(child);
+	}
+	
+	public void addComponent(GameComponent component)
+	{
+		children.add(child);
+	}
+	
+	public void input()
+	{
+		for(GameObject child : children)
+			child.input();
+	}
+	
+	public void update()
+	{
+		for(GameObject child : children)
+			child.update();
+	}
+	
+	public void render()
+	{
+		for(GameObject child : children)
+			child.render();
+	}
+}

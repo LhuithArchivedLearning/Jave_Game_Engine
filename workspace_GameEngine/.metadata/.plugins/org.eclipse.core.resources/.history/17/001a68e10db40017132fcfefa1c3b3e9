@@ -1,0 +1,13 @@
+package com.base.game;
+
+import com.base.engine.core.GameComponent;
+import com.base.engine.core.Transform;
+
+public class MeshRenderer extends GameComponent
+{
+	public void render(Transform transform)
+	{
+		
+		
+	}
+}
