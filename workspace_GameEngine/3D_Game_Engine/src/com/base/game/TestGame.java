@@ -40,9 +40,24 @@ public class TestGame extends Game
 		
 		MeshRenderer meshRenderer = new MeshRenderer(mesh, material);
 		
+		
+		Vertex[] vertices2 = new Vertex[]
+				{
+						new Vertex(new Vector3f(-fieldWidth/4, 0.0f, -fieldDepth/4),  new Vector2f(0.0f, 0.0f)),
+						new Vertex(new Vector3f(-fieldWidth/4, 0.0f, fieldDepth * .75f), new Vector2f(0.0f, 1.0f)),
+						new Vertex(new Vector3f(fieldWidth/4 * 3, 0.0f, -fieldDepth/4),   new Vector2f(1.0f, 0.0f)),
+						new Vertex(new Vector3f(fieldWidth * 0.75f, 0.0f, fieldDepth* .75f),       new Vector2f(1.0f, 1.0f)),
+				};
+		int[] indices2 = new int[] {0, 1, 2,
+								   2, 1, 3
+		};
+			
+		Mesh mesh2 = new Mesh(vertices2, indices, true);
+		
 		GameObject planeObject = new GameObject();
 		planeObject.addComponent(meshRenderer);
 		planeObject.getTransform().getPos().set(0, -1, 5);
+		
 		
 		GameObject directionalLightObject = new GameObject();
 		DirectionalLight directionalLight =  new DirectionalLight(new Vector3f(1.0f,0.0f,0.0f), 0.4f, new Vector3f(1.0f,1.0f,1.0f));
@@ -66,13 +81,30 @@ public class TestGame extends Game
 		spotLightObject.addComponent(spotLight);
 		
 		spotLightObject.getTransform().getPos().set(5,0,5);
-		spotLightObject.getTransform().setRot(new Quaternion().initRotation(new Vector3f(0,1,0),(float) Math.toRadians(90.0f)));
+		spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0,1,0),(float) Math.toRadians(90.0f)));
 		getRootObject().addChild(planeObject);
 		//getRootObject().addChild(directionalLightObject);
 		getRootObject().addChild(pointLightObject);
 		getRootObject().addChild(spotLightObject);
 		
 		getRootObject().addChild(new GameObject().addComponent(new Camera((float)(Math.toRadians(70.0f)), (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000.0f)));
+	
+		MeshRenderer meshRenderer2 = new MeshRenderer(mesh2, material);
+		MeshRenderer meshRenderer3 = new MeshRenderer(mesh2, material);
+		GameObject miniplaneObject = new GameObject();
+		miniplaneObject.addComponent(meshRenderer2);
+		miniplaneObject.getTransform().getPos().set(0, 2, 0);
+		
+		GameObject miniplaneObject2 = new GameObject();
+		miniplaneObject2.addComponent(meshRenderer3);
+		miniplaneObject2.getTransform().getPos().set(15, 0, 0);		
+		
+		getRootObject().addChild(miniplaneObject);
+		
+		miniplaneObject.addChild(miniplaneObject2);
+		
+		miniplaneObject.getTransform().setRot(new Quaternion(new Vector3f(0,1,0), 2.4f));
+	
 	}
 	
 }
