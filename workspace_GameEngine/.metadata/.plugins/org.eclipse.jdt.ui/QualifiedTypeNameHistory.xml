@@ -31,4 +31,5 @@
 <fullyQualifiedTypeName name="com.base.engine.core.Transform"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Shader"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Vector2f"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.ForwardAmbient"/>
 </qualifiedTypeNameHistroy>
