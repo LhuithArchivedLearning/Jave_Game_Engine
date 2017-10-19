@@ -1,5 +1,7 @@
 package com.base.engine.core;
 import java.awt.Canvas;
+
+import com.base.engine.rendering.RenderingEngine;
 import com.base.engine.rendering.Window;
 
 public class CoreEngine extends Canvas

@@ -1,0 +1,37 @@
+package com.base.engine.components;
+
+import com.base.engine.core.RenderingEngine;
+import com.base.engine.core.Vector3f;
+
+public class DirectionalLight extends BaseLight
+{
+	private Vector3f direction;
+	
+	public DirectionalLight(Vector3f color, float intensity, Vector3f direction)
+	{
+		super(color, intensity)
+		this.direction = direction.normalized();
+	}
+	
+	@Override
+	public void addToRenderingEngine(RenderingEngine renderingEngine)
+	{
+		renderingEngine.addDirectionalLight(this);
+	}
+	
+	public BaseLight getBase() {
+		return base;
+	}
+
+	public void setBase(BaseLight base) {
+		this.base = base;
+	}
+
+	public Vector3f getDirection() {
+		return direction;
+	}
+
+	public void setDirection(Vector3f direction) {
+		this.direction = direction.normalized();
+	}
+}

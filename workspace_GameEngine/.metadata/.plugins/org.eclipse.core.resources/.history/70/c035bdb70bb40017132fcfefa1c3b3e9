@@ -1,6 +1,0 @@
-package com.base.engine.core;
-
-public class GameObject 
-{
-	private ArrayList<GameObject> children;
-}
