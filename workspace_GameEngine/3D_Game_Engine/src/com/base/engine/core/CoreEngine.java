@@ -80,7 +80,6 @@ public class CoreEngine extends Canvas
 					Stop();
 				
 				game.input((float)frameTime);
-				renderingEngine.input((float)frameTime);
 				Input.Update();
 				
 				game.update((float)frameTime);

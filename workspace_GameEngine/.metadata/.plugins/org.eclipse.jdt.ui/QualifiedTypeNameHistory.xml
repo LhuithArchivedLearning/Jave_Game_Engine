@@ -24,7 +24,6 @@
 <fullyQualifiedTypeName name="com.base.engine.rendering.BasicShader"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Matrix4f"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Camera"/>
-<fullyQualifiedTypeName name="com.base.engine.rendering.Window"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Vector2f"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.ForwardAmbient"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
@@ -39,4 +38,7 @@
 <fullyQualifiedTypeName name="com.base.engine.components.SpotLight"/>
 <fullyQualifiedTypeName name="com.base.engine.core.GameObject"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Transform"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Quaternion"/>
+<fullyQualifiedTypeName name="com.base.engine.components.Camera"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.Window"/>
 </qualifiedTypeNameHistroy>

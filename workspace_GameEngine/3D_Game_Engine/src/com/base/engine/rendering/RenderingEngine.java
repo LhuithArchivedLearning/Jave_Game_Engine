@@ -8,6 +8,7 @@ import static org.lwjgl.opengl.GL32.GL_DEPTH_CLAMP;
 import java.util.ArrayList;
 
 import com.base.engine.components.BaseLight;
+import com.base.engine.components.Camera;
 import com.base.engine.core.GameObject;
 import com.base.engine.core.Vector3f;
 import com.base.engine.rendering.*;
@@ -36,7 +37,7 @@ public class RenderingEngine
 
 		glEnable(GL_TEXTURE_2D);
 		
-		mainCamera = new Camera((float)(Math.toRadians(70.0f)), (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000.0f);
+		//mainCamera = new Camera((float)(Math.toRadians(70.0f)), (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000.0f);
 		
 		ambientLight = new Vector3f(0.1f, 0.1f, 0.1f);
 		
@@ -73,11 +74,6 @@ public class RenderingEngine
 		
 	}
 	
-
-	public void input(float delta)
-	{
-		mainCamera.input(delta);
-	}
 	
 	public void render(GameObject object)
 	{
@@ -98,7 +94,7 @@ public class RenderingEngine
 		//TODO: FIX GLDEPTH MASK ISSUE!!!!!!!!!!!!!!
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE);
-		glDisable(GL_DEPTH_TEST);
+		//glDisable(GL_DEPTH_TEST);
 		glDepthMask(false);
 		glDepthFunc(GL_EQUAL);
 
@@ -114,7 +110,7 @@ public class RenderingEngine
 		
 		glDepthFunc(GL_LESS);
 		glDepthMask(true);
-		glEnable(GL_DEPTH_TEST);
+		//glEnable(GL_DEPTH_TEST);
 		glDisable(GL_BLEND);
 	}
 	
@@ -163,6 +159,11 @@ public class RenderingEngine
 	public void addLight(BaseLight light)
 	{
 		lights.add(light);
+	}
+	
+	public void addCamera(Camera camera)
+	{
+		mainCamera = camera;
 	}
 	
 	public BaseLight getActivelight()
