@@ -17,20 +17,20 @@ public class MeshRenderer implements GameComponent
 		this.mesh = mesh;
 		this.material = material;
 	}
+	@Override
+	public void input(Transform transform, float delta) {}
 	
 	@Override
-	public void render(Transform transform)
+	public void update(Transform transform, float delta) {}
+	
+	
+	@Override
+	public void render(Transform transform, Shader shader)
 	{
-		Shader shader = BasicShader.getInstance();
-		
+		//transform.getTransformation(), transform.getProjectedTransformation()
 		shader.bind();
-		shader.updateUniforms(transform.getTransformation(), transform.getProjectedTransformation(), material);
+		shader.updateUniforms(transform, material);
 		mesh.draw();		
 	}
 
-	@Override
-	public void input(Transform transform) {}
-	
-	@Override
-	public void update(Transform transform) {}
 }

@@ -1,25 +1,19 @@
 package com.base.engine.core;
 import java.awt.Canvas;
-import javax.swing.JOptionPane;
-import javax.xml.crypto.Data;
-
-import com.base.engine.net.GameClient;
-import com.base.engine.net.GameServer;
-import com.base.engine.rendering.RenderUtil;
 import com.base.engine.rendering.Window;
 
 public class CoreEngine extends Canvas
 {
 	private boolean isRunning;
 	private Game game;
+	private RenderingEngine renderingEngine;
 	private int width;
 	private int height;
 	
 	private double frameTime;
 	
 	public CoreEngine(int width, int height, double framerate, Game game)
-	{
-		
+	{		
 		isRunning = false;
 		this.game = game;
 		this.width = width;
@@ -27,16 +21,10 @@ public class CoreEngine extends Canvas
 		this.frameTime = 1.0/framerate;
 	}
 	
-	private void initializeRenderingSystem()
-	{
-		RenderUtil.initGraphics();
-		System.out.println(RenderUtil.getOpenGLVersion());
-	}
-	
 	public void createWindow(String title)
 	{
 		Window.createWindow(width, height, title);
-		initializeRenderingSystem();
+		this.renderingEngine = new RenderingEngine();
 	}
 	
 	public void Start()
@@ -66,18 +54,18 @@ public class CoreEngine extends Canvas
 		
 		game.init();
 		
-		long lastTime = Time.getTime();
+		double lastTime = Time.getTime();
 		double unproccesedTime = 0;
 	
 		while(isRunning)
 		{
 			boolean render = false;
 			
-			long startTime = Time.getTime();
-			long passedTime = startTime - lastTime;
+			double startTime = Time.getTime();
+			double passedTime = startTime - lastTime;
 			lastTime = startTime;
 			
-			unproccesedTime += passedTime / (double)Time.SECOND;
+			unproccesedTime += passedTime;
 			frameCounter += passedTime;
 			
 			while(unproccesedTime > frameTime)
@@ -89,13 +77,13 @@ public class CoreEngine extends Canvas
 				if(Window.isCloseRequested())
 					Stop();
 				
-				Time.setDelta(frameTime);
-				
-				game.input();
+				game.input((float)frameTime);
+				renderingEngine.input((float)frameTime);
 				Input.Update();
-				game.update();
 				
-				if(frameCounter >= Time.SECOND)
+				game.update((float)frameTime);
+				
+				if(frameCounter >= 1.0)
 				{
 					System.out.println(frames);
 					frames = 0;
@@ -105,7 +93,9 @@ public class CoreEngine extends Canvas
 			
 			if(render)
 			{
-				Render();
+				renderingEngine.render(game.getRootObject());
+				Window.render();
+				
 				frames ++;
 			}
 			else
@@ -119,13 +109,6 @@ public class CoreEngine extends Canvas
 		}
 		
 		CleanUp();			
-	}
-	
-	private void Render()
-	{
-		RenderUtil.clearScreen();
-		game.render();
-		Window.render();
 	}
 	
 	private void CleanUp()

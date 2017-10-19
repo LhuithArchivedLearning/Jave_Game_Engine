@@ -1,0 +1,31 @@
+package com.base.engine.core;
+
+public abstract class Game 
+{
+	private GameObject root;
+	
+	public void init()
+	{
+		
+	}
+	
+	public void input()
+	{
+		root.input();
+	}
+	
+	public void update()
+	{
+		root.update();
+	}
+	
+	public void render()
+	{
+		root.render();
+	}
+	
+	public GameObject getRootObject()
+	{
+		return root;
+	}
+}

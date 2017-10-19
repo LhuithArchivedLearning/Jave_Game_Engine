@@ -1,0 +1,11 @@
+package com.base.engine.core;
+
+public abstract class Game 
+{
+	root = new GameObject();
+	
+	public void init();
+	public void input();
+	public void update();
+	public void render();
+}

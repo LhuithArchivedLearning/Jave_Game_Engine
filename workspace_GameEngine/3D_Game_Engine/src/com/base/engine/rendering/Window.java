@@ -6,6 +6,8 @@ import org.lwjgl.input.Mouse;
 import org.lwjgl.opengl.Display;
 import org.lwjgl.opengl.DisplayMode;
 
+import com.base.engine.core.Vector2f;
+
 public class Window
 {
 	public static void createWindow(int width, int height, String title)
@@ -48,7 +50,7 @@ public class Window
 		return Display.getDisplayMode().getWidth();
 	}
 	
-	public static int GetHeight()
+	public static int getHeight()
 	{
 		return Display.getDisplayMode().getHeight();
 	}
@@ -56,5 +58,10 @@ public class Window
 	public static String getTitle()
 	{
 		return Display.getTitle();
+	}
+	
+	public Vector2f getCentre()
+	{
+		return new Vector2f(getWidth()/2, getHeight()/2);
 	}
 }

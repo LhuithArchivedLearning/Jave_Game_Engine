@@ -3,35 +3,19 @@ package com.base.game;
 import com.base.engine.core.Game;
 import com.base.engine.core.GameObject;
 import com.base.engine.core.Texture;
-import com.base.engine.core.Time;
 import com.base.engine.core.Transform;
 import com.base.engine.core.Vector2f;
 import com.base.engine.core.Vector3f;
-import com.base.engine.rendering.Attenuation;
-import com.base.engine.rendering.BaseLight;
 import com.base.engine.rendering.Camera;
 import com.base.engine.rendering.Material;
 import com.base.engine.rendering.Mesh;
-import com.base.engine.rendering.PhongShader;
-import com.base.engine.rendering.PointLight;
-import com.base.engine.rendering.RenderUtil;
-import com.base.engine.rendering.Shader;
-import com.base.engine.rendering.SpotLight;
 import com.base.engine.rendering.Vertex;
 import com.base.engine.rendering.Window;
 
-public class TestGame implements Game 
+public class TestGame extends Game 
 {
-	private Camera camera;
-	
-	private GameObject root;
-	
 	public void init()
 	{
-		root = new GameObject();
-		camera = new Camera();
-		
-		
 		float fieldDepth = 10.0f;
 		float fieldWidth = 10.0f;
 		
@@ -51,29 +35,13 @@ public class TestGame implements Game
 		Mesh mesh = new Mesh(vertices, indices, true);
 		
 		MeshRenderer meshRenderer = new MeshRenderer(mesh, material);
-		root.addComponent(meshRenderer);
-		Transform.setProjection(70f, Window.getWidth(), Window.GetHeight(), 0.1f, 1000);
-		Transform.setCamera(camera);
+		
+		GameObject planeObject = new GameObject();
+		planeObject.addComponent(meshRenderer);
+		planeObject.getTransform().setPos(0, -1, 5);
+		
+		getRootObject().addChild(planeObject);
 		
 	}
 	
-	public void input()
-	{
-		camera.input();
-		root.input();
-	}
-	
-	float temp = 0.0f;
-	
-	public void update()
-	{
-		root.update();
-		root.getTransform().setTranslation(0, -1, 5);
-	}
-	
-	
-	public void render()
-	{
-		root.render();
-	}
 }

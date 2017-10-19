@@ -26,3 +26,14 @@
 1508332938123	Rename type 'MainComponent'
 1508334544409	Move compilation unit
 1508335121489	Rename type 'GameComponenet'
+1508366068270	Delete element
+1508367110360	Inline local variable 'ar'
+1508370437787	Rename field 'translation'
+1508370453495	Rename field 'rotation'
+1508370493582	Rename method 'getTranslation'
+1508370514257	Rename method 'setTranslation'
+1508370553123	Rename method 'setTranslation'
+1508370573934	Rename method 'getRotation'
+1508370580975	Rename method 'setRotation'
+1508370588513	Rename method 'setRotation'
+1508370787306	Rename method 'GetHeight'

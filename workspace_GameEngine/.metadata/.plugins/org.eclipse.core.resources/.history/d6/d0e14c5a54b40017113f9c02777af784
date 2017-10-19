@@ -1,0 +1,11 @@
+package com.base.engine.core;
+
+import com.base.engine.rendering.BasicShader;
+
+public class RenderingEngine 
+{
+	public void render(GameObject object)
+	{
+		object.render(BasicShader.getInstance());
+	}
+}

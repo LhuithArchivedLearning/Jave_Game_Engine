@@ -1,9 +1,29 @@
 package com.base.engine.core;
 
-public interface Game 
+public abstract class Game 
 {
-	public void init();
-	public void input();
-	public void update();
-	public void render();
+	private GameObject root;
+	
+	public void init()
+	{
+		
+	}
+	
+	public void input(float delta)
+	{
+		getRootObject().input(delta);
+	}
+	
+	public void update(float delta)
+	{
+		getRootObject().update(delta);
+	}
+	
+	public GameObject getRootObject()
+	{
+		if(root == null)
+			root = new GameObject();
+		
+		return root;
+	}
 }

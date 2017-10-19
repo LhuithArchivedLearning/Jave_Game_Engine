@@ -1,0 +1,9 @@
+package com.base.engine.core;
+
+public class RenderingEngine 
+{
+	public void render(GameObject object)
+	{
+		object.render();
+	}
+}

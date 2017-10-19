@@ -22,7 +22,13 @@
 <fullyQualifiedTypeName name="com.base.engine.core.GameComponent"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Material"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Mesh"/>
-<fullyQualifiedTypeName name="com.base.engine.rendering.BasicShader"/>
-<fullyQualifiedTypeName name="com.base.engine.rendering.Shader"/>
 <fullyQualifiedTypeName name="com.base.engine.core.GameObject"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.BasicShader"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Matrix4f"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.Camera"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.Window"/>
+<fullyQualifiedTypeName name="com.base.engine.core.RenderingEngine"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Transform"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.Shader"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Vector2f"/>
 </qualifiedTypeNameHistroy>
