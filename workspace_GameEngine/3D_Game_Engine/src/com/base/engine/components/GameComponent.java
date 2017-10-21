@@ -13,7 +13,7 @@ public abstract class GameComponent
 	
 	public void update(float delta)	{}
 	
-	public void render(Shader shader){}
+	public void render(Shader shader, RenderingEngine renderingEngine){}
 	
 	public void setParent(GameObject parent){ this.parent = parent;}
 	

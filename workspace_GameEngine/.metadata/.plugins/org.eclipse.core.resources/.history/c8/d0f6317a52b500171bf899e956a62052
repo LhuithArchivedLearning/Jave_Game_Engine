@@ -1,0 +1,16 @@
+package com.base.engine.components;
+
+import com.base.engine.core.Vector3f;
+import com.base.engine.rendering.ForwardDirectional;
+import com.base.engine.rendering.RenderingEngine;
+
+public class DirectionalLight extends BaseLight
+{
+	public DirectionalLight(Vector3f color, float intensity)
+	{
+		super(color, intensity);
+		this.direction = direction.normalized();
+		
+		setShader(ForwardDirectional.getInstance());
+	}
+}

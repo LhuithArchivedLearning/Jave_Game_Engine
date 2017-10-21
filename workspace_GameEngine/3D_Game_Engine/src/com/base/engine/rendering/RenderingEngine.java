@@ -84,10 +84,8 @@ public class RenderingEngine
 	    object.addToRenderingEngine(this);
 	    
 	    Shader forwardAmbient = ForwardAmbient.getInstance();
-	    
-	    forwardAmbient.setRenderingEngine(this);
-	    
-		object.render(forwardAmbient);
+	        
+		object.render(forwardAmbient, this);
 		
 		//glEnable(GL_DEPTH_TEST);
 		//glDepthMask(false);
@@ -102,9 +100,8 @@ public class RenderingEngine
 		for(BaseLight light : lights)
 		{
 			//object.render(light.getShader());
-			light.getShader().setRenderingEngine(this);
 			activeLight = light;
-			object.render(light.getShader());
+			object.render(light.getShader(), this);
 		}
 		
 		

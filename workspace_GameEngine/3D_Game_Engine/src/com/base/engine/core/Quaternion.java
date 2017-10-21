@@ -8,13 +8,6 @@ public class Quaternion
 	private float w;
 	
 	
-	
-//	
-//	public Quaternion()
-//	{
-//		this(0,0,0,1);
-//	}
-//	
 	public Quaternion(float x, float y, float z, float w)
 	{
 		this.x = x;
@@ -64,6 +57,11 @@ public class Quaternion
 		return new Quaternion(-x, -y, -z, w);
 	}
 	
+	public Quaternion mul(float r)
+	{
+		return new Quaternion(x * r, y * r, z * r, w * r);
+	}
+	
 	public Quaternion mul(Quaternion r)
 	{
 		float w_ =  w * r.getW() - x * r.getX() - y * r.getY() - z * r.getZ();
@@ -96,33 +94,32 @@ public class Quaternion
 	
 	public Vector3f getForward()
 	{
-		//.rotate(this)
-		return new Vector3f(2.0f *(x*z - w*y), 2.0f * (y*z + w*x), 1.0f - 2.0f * (x*x + y*y));// new Vector3f(0,0,1);
+		return new Vector3f(0,0,1).rotate(this);
 	}
 	
 	public Vector3f getBack()
 	{
-		return new Vector3f(0,0,-1);
+		return new Vector3f(0,0,-1).rotate(this);
 	}
 	
 	public Vector3f getUp()
 	{
-		return  new Vector3f(2.0f * (x*y + w*z), 1.0f - 2.0f * (x*x + z*z), 2.0f * (y*z - w*x)); //Vector3f(0,1,0);
+		return new Vector3f(0,1,0).rotate(this);
 	}
 	
 	public Vector3f getDown()
 	{
-		return new Vector3f(0,-1,0);
+		return new Vector3f(0,-1,0).rotate(this);
 	}
 	
 	public Vector3f getRight()
 	{
-		return new Vector3f(1.0f - 2.0f * (y*y + z*z), 2.0f * (x*y - w*z), 2.0f * (x*z + w*y));//new Vector3f(1,1,0);
+		return new Vector3f(1,0,0).rotate(this);
 	}
 	
 	public Vector3f getLeft()
 	{
-		return new Vector3f(-(1.0f - 2.0f * (y*y + z*z)), -(2.0f * (x*y - w*z)), -(2.0f * (x*z + w*y)));//new Vector3f(1,1,0);
+		return new Vector3f(-1,0,0).rotate(this);
 	}
 	
 	public Quaternion set(float x, float y, float z, float w){this.x = x; this.y = y; this.z = z; this.w = w; return this;}

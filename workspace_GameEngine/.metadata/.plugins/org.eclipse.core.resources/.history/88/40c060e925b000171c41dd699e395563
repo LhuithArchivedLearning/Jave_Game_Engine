@@ -1,8 +1,0 @@
-package com.base.engine;
-
-public class Bitmap 
-{
-	private int width;
-	private int height;
-	private int[] pixels;
-}

@@ -41,4 +41,6 @@
 <fullyQualifiedTypeName name="com.base.engine.core.Quaternion"/>
 <fullyQualifiedTypeName name="com.base.engine.components.Camera"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Window"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.RenderingEngine"/>
 </qualifiedTypeNameHistroy>
