@@ -26,14 +26,12 @@
 <fullyQualifiedTypeName name="com.base.engine.core.RenderingEngine"/>
 <fullyQualifiedTypeName name="com.base.engine.components.PointLight"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Attenuation"/>
-<fullyQualifiedTypeName name="com.base.engine.rendering.Shader"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.ForwardDirectional"/>
 <fullyQualifiedTypeName name="com.base.engine.components.BaseLight"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.ForwardPoint"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.ForwardSpot"/>
 <fullyQualifiedTypeName name="com.base.engine.components.SpotLight"/>
 <fullyQualifiedTypeName name="com.base.engine.core.GameObject"/>
-<fullyQualifiedTypeName name="com.base.engine.core.Transform"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Quaternion"/>
 <fullyQualifiedTypeName name="com.base.engine.components.Camera"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Window"/>
@@ -50,4 +48,9 @@
 <fullyQualifiedTypeName name="java.lang.System"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Input"/>
 <fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.resourceManagment.MappedValues"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Transform"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.resourceManagment.ShaderResource"/>
+<fullyQualifiedTypeName name="javax.annotation.Resource"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.Shader"/>
 </qualifiedTypeNameHistroy>

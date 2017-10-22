@@ -1,0 +1,11 @@
+package com.base.engine.rendering.resourceManagment;
+
+import java.util.HashMap;
+
+import com.base.engine.core.Vector3f;
+
+public class MappedValues 
+{
+	private HashMap<String, Vector3f> vector3fHashMap;
+	private HashMap<String, Float> floatHashMap;
+}

@@ -26,19 +26,7 @@ public class Quaternion
 		this.z = axis.getZ() * sinHalfAngle;
 		this.w = cosHalfAngle; 
 	}
-	
-//	public Quaternion initRotation(Vector3f axis, float angle)
-//	{
-//		float sinHalfAngle = (float)Math.sin(angle/2);
-//		float cosHalfAngle = (float)Math.cos(angle/2);
-//		
-//		this.x = axis.getX() * sinHalfAngle;
-//		this.y = axis.getY() * sinHalfAngle;
-//		this.z = axis.getZ() * sinHalfAngle;
-//		this.w = cosHalfAngle; 
-//		
-//		return this;
-//	}
+
 	
 	public float length()
 	{

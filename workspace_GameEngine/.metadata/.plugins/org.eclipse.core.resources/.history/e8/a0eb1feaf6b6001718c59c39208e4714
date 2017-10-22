@@ -1,0 +1,31 @@
+package com.base.engine.rendering;
+
+import java.util.HashMap;
+
+import com.base.engine.core.Texture;
+import com.base.engine.core.Vector3f;
+
+public class Material extends MappedValues
+{
+	private HashMap<String, Texture> textureHashMap;
+	private HashMap<String, Vector3f> vector3fHashMap;
+	private HashMap<String, Float> floatHashMap;
+
+
+	public Material()
+	{
+		textureHashMap = new HashMap<String, Texture>();
+	}
+
+	public void addTexture(String name, Texture texture){textureHashMap.put(name, texture);}
+
+	public Texture getTexture(String name)
+	{
+		Texture result = textureHashMap.get(name);		
+		if(result != null)
+		return result;
+		
+		return new Texture("fail.png");
+	}
+
+}

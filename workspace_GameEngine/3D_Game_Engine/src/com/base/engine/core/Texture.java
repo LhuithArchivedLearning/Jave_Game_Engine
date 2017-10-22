@@ -1,6 +1,7 @@
 package com.base.engine.core;
 
 import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.opengl.GL13.*;
 
 import java.awt.image.BufferedImage;
 import java.io.File;
@@ -29,7 +30,7 @@ public class Texture
 		}
 		else
 		{
-			resource = new TextureResource(loadTexture(fileName));
+			resource = (loadTexture(fileName));
 			loadedTextures.put(fileName, resource);
 		}
 	}
@@ -47,6 +48,13 @@ public class Texture
 	
 	public void bind()
 	{
+		bind(0);
+	}
+	
+	public void bind(int samplerSlot)
+	{
+		assert(samplerSlot >= 0 && samplerSlot <= 31);
+		glActiveTexture(GL_TEXTURE0 + samplerSlot);
 		glBindTexture(GL_TEXTURE_2D, resource.getId());
 	}
 	
@@ -55,7 +63,7 @@ public class Texture
 		return resource.getId();
 	}
 	
-	private static int loadTexture(String fileName)
+	private static TextureResource loadTexture(String fileName)
 	{
 		String[] splitArray = fileName.split("\\.");
 		String ext = splitArray[splitArray.length - 1];
@@ -86,8 +94,8 @@ public class Texture
 			
 			buffer.flip();
 			
-			int id = glGenTextures();		
-			glBindTexture(GL_TEXTURE_2D, id);
+			TextureResource resource = new TextureResource();		
+			glBindTexture(GL_TEXTURE_2D, resource.getId());
 			
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
 			glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
@@ -97,7 +105,7 @@ public class Texture
 			
 			glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA8, image.getWidth(), image.getHeight(), 0, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 			
-			return id;
+			return resource;
 		}
 		catch(Exception e)
 		{
@@ -105,7 +113,7 @@ public class Texture
 			System.exit(1);
 		}
 		
-		return 0;
+		return null;
 	}
 	
 }
