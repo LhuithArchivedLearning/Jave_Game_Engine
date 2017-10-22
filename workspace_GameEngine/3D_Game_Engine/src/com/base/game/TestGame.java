@@ -2,17 +2,18 @@ package com.base.game;
 
 import com.base.engine.components.Camera;
 import com.base.engine.components.DirectionalLight;
+import com.base.engine.components.FreeLook;
+import com.base.engine.components.FreeMove;
 import com.base.engine.components.MeshRenderer;
 import com.base.engine.components.PointLight;
 import com.base.engine.components.SpotLight;
 import com.base.engine.core.Game;
 import com.base.engine.core.GameObject;
-import com.base.engine.core.Input;
 import com.base.engine.core.Quaternion;
 import com.base.engine.core.Texture;
-import com.base.engine.core.Time;
 import com.base.engine.core.Vector2f;
 import com.base.engine.core.Vector3f;
+import com.base.engine.rendering.Attenuation;
 import com.base.engine.rendering.Material;
 import com.base.engine.rendering.Mesh;
 import com.base.engine.rendering.Vertex;
@@ -20,7 +21,6 @@ import com.base.engine.rendering.Window;
 
 public class TestGame extends Game 
 {
-	GameObject test3;
 	float temp;
 	
 	public static final Vector3f GRAVITY = new Vector3f(0, -9.8f, 0);
@@ -93,7 +93,7 @@ public class TestGame extends Game
 		
 		PointLight pointLight = new PointLight(
 				new Vector3f(0.0f,1.0f,0.0f), 0.4f, 
-				new Vector3f(0.0f,0.0f,1.0f));
+				new Attenuation(0.0f,0.0f,1.0f));
 		
 		pointLightObject.addComponent(pointLight);
 		
@@ -101,7 +101,7 @@ public class TestGame extends Game
 		
 		PointLight spotLight = new SpotLight(
 				new Vector3f(0.0f,1.0f, 1.0f), 0.6f, 
-				new Vector3f(0.0f,0.0f,0.1f), 0.7f);
+				new Attenuation(0.0f,0.0f,0.1f), 0.7f);
 		
 		
 		spotLightObject.addComponent(spotLight);
@@ -109,22 +109,21 @@ public class TestGame extends Game
 		addObject(planeObject);
 		addObject(directionalLightObject);
 		addObject(pointLightObject);
-		//addObject(spotLightObject);
+		addObject(spotLightObject);
 		
 		//getRootObject().addChild();
 	
 		GameObject test1 = new GameObject().addComponent(new MeshRenderer(mesh2, material));
 		GameObject test2 = new GameObject().addComponent(new MeshRenderer(mesh2, material));
-		test3 = new GameObject().addComponent(new MeshRenderer(tempMesh, material));
-		
+		GameObject test3 = new GameObject().addComponent(new LookAtComponent()).addComponent(new MeshRenderer(tempMesh, material));
+
 		test1.getTransform().getPos().set(0, 2, 0);
 		test1.getTransform().setRot(new Quaternion(new Vector3f(0,1,0), 2.4f));
 		
 		test2.getTransform().getPos().set(0, 0, 15);		
 		
-		test1.addChild(test2);
-		
-		test2.addChild(new GameObject().addComponent(new Camera((float)(Math.toRadians(70.0f)), (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000.0f)));
+		test1.addChild(test2);		
+		test2.addChild(new GameObject().addComponent(new FreeLook(0.25f)).addComponent(new FreeMove(10f)).addComponent(new Camera((float)(Math.toRadians(70.0f)), (float)Window.getWidth()/(float)Window.getHeight(), 0.1f, 1000.0f)));
 		
 		
 		addObject(test1);
@@ -133,11 +132,11 @@ public class TestGame extends Game
 		test3.getTransform().getPos().set(5,5,5);
 		test3.getTransform().setRot(new Quaternion(new Vector3f(0,1,0),(float) Math.toRadians(-70.0f)));
 		
-		addObject(new GameObject().addComponent(new MeshRenderer(new Mesh("monkey3.obj"), material2)));
+		addObject(new GameObject().addComponent(new LookAtComponent()).addComponent(new MeshRenderer(new Mesh("monkey3.obj"), material2)));
 		
 		directionalLight.getTransform().setRot(new Quaternion(new Vector3f(1,0,0),(float) Math.toRadians(-45)));
 		
-		test3.addChild(spotLightObject);
+		//test3.addChild(spotLightObject);
 		
 		//spotLightObject.getTransform().getPos().set(5,0,5);
 		//spotLightObject.getTransform().setRot(new Quaternion(new Vector3f(0,1,0),(float) Math.toRadians(90.0f)));
@@ -146,26 +145,4 @@ public class TestGame extends Game
 		
 	}
 	
-	public void update(float delta)
-	{
-	    temp += delta;
-	    
-	    //Super shitty Physics
-	    Vector3f velocity = test3.getTransform().getPos().sub(oldp);
-
-	    if( test3.getTransform().getPos().getY() <= 0)
-	    {
-	    	oldp.setY((test3.getTransform().getPos().getY() + velocity.getY()) * (FRICTION));	
-	    }
-	    else
-	    {		    
-		    oldp = (test3.getTransform().getPos());	    
-		    test3.getTransform().getPos().set(test3.getTransform().getPos().add(velocity));	    
-		    test3.getTransform().getPos().set(test3.getTransform().getPos().add(GRAVITY.mul(delta)));
-		    
-	    }
-	    
-	    
-		test3.getTransform().getRot().set(new Quaternion(new Vector3f(0,1,0),(float) Math.toRadians(45f * temp)));
-	}
 }

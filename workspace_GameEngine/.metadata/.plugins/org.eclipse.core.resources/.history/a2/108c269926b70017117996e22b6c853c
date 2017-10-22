@@ -1,0 +1,6 @@
+package com.base.engine.components;
+
+public class FreeLook extends GameComponent
+{
+
+}

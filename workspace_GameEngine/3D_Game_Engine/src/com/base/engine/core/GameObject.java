@@ -11,17 +11,20 @@ public class GameObject
 	private ArrayList<GameObject> children;
 	private ArrayList<GameComponent> components;
 	private Transform transform;
+	private CoreEngine engine;
 	
 	public GameObject()
 	{
 		children = new ArrayList<GameObject>();
 		components = new ArrayList<GameComponent>();
 		transform = new Transform();
+		engine = null;
 	}
 	
 	public void addChild(GameObject child)
 	{
 		children.add(child);
+		child.setEngine(engine);
 		child.getTransform().setParent(transform);
 	}
 	
@@ -33,16 +36,36 @@ public class GameObject
 		return this;
 	}
 	
-	public void input(float delta)
+	public void inputAll(float delta)
 	{
+		input(delta);
 		
+		for(GameObject child : children)
+			child.inputAll(delta);
+	}
+	
+	public void updateAll(float delta)
+	{
+		update(delta);
+		
+		for(GameObject child : children)
+			child.updateAll(delta);
+	}
+	
+	public void renderAll(Shader shader, RenderingEngine renderingEngine)
+	{
+		render(shader, renderingEngine);
+		
+		for(GameObject child : children)
+			child.renderAll(shader, renderingEngine);
+	}
+	
+	public void input(float delta)
+	{	
 		transform.update();
 		
 		for(GameComponent component : components)
-			component.input(delta);
-		
-		for(GameObject child : children)
-			child.input(delta);
+			component.input(delta);	
 	}
 	
 	public void update(float delta)
@@ -50,8 +73,6 @@ public class GameObject
 		for(GameComponent component : components)
 			component.update(delta);
 		
-		for(GameObject child : children)
-			child.update(delta);
 	}
 	
 	public void render(Shader shader, RenderingEngine renderingEngine)
@@ -59,22 +80,38 @@ public class GameObject
 		for(GameComponent component : components)
 			component.render(shader, renderingEngine);
 		
-		for(GameObject child : children)
-			child.render(shader, renderingEngine);
 	}
-	
-	public void addToRenderingEngine(RenderingEngine renderingEngine)
+	public ArrayList<GameObject> getAllAttached()
 	{
-		for(GameComponent component : components)
-			component.addToRenderingEngine(renderingEngine);
+		ArrayList<GameObject> result = new ArrayList<GameObject>();
 		
 		for(GameObject child : children)
-			child.addToRenderingEngine(renderingEngine);
+		{
+			result.addAll(child.getAllAttached());
+		}
+		
+		result.add(this);
+		
+		return result;
 	}
-	
+
 	public Transform getTransform()
 	{
 		return transform;
+	}
+	
+	public void setEngine(CoreEngine engine)
+	{
+		if(this.engine != engine)
+		{
+			this.engine = engine;
+			
+			for(GameComponent component : components)
+				component.addToEngine(engine);
+			
+			for(GameObject child : children)
+				child.setEngine(engine);;
+		}
 	}
 	
 }

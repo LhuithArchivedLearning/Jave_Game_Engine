@@ -1,0 +1,46 @@
+package com.base.engine.components;
+
+import com.base.engine.core.Input;
+import com.base.engine.core.Vector3f;
+
+public class FreeMove extends GameComponent
+{
+	private float speed;
+	private int forwardKey;
+	private int backKey;
+	private int leftKey;
+	private int rightKey;
+	
+	public FreeMove(float speed)
+	{
+		this(speed, Input.KEY_W, Input.KEY_S, Input.KEY_A, Input.KEY_D);
+	}
+	
+	
+	public FreeMove(float speed, int forwardKey, int backKey, int leftKey, int rightKey)
+	{
+		this(speed, Input.KEY_W, Input.KEY_S, Input.KEY_A, Input.KEY_D);
+	}
+	
+	@Override
+	public void input (float delta)
+	{
+		float moveAmt = (float)(10 * delta);
+	
+		if(Input.GetKey(Input.KEY_W))
+			move(getTransform().getRot().getForward(), moveAmt);
+		if(Input.GetKey(Input.KEY_S))
+			move(getTransform().getRot().getForward(), -moveAmt);
+		if(Input.GetKey(Input.KEY_A))
+			move(getTransform().getRot().getLeft(), moveAmt);
+		if(Input.GetKey(Input.KEY_D))
+			move(getTransform().getRot().getRight(), moveAmt);
+			
+			
+	}
+	public void move(Vector3f dir, float amt)
+	{
+		getTransform().setPos(getTransform().getPos().add(dir.mul(amt)));
+	}
+
+}

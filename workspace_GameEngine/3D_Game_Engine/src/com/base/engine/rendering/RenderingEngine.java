@@ -32,7 +32,7 @@ public class RenderingEngine extends MappedValues
 		samplerMap = new HashMap<String, Integer>();		
 		samplerMap.put("diffuse", 0);
 		
-		addVector3f("ambient", new Vector3f(0.1f, 0.1f, 0.1f));
+		addVector3f("ambient", new Vector3f(0.05f, 0.05f, 0.05f));
 		
 	    forwardAmbient = new Shader("forward-ambient"); //ForwardAmbient.getInstance();
     		
@@ -58,33 +58,27 @@ public class RenderingEngine extends MappedValues
 	{
 		glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	    
-	    lights.clear();
-	    //clearLightList();
-	    object.addToRenderingEngine(this);
-	    
-		object.render(forwardAmbient, this);
+		object.renderAll(forwardAmbient, this);
 		
 		//glEnable(GL_DEPTH_TEST);
 		//glDepthMask(false);
+		
 		//TODO: FIX GLDEPTH MASK ISSUE!!!!!!!!!!!!!!
 		glEnable(GL_BLEND);
 		glBlendFunc(GL_ONE, GL_ONE);
-		//glDisable(GL_DEPTH_TEST);
 		glDepthMask(false);
 		glDepthFunc(GL_EQUAL);
 
 		
 		for(BaseLight light : lights)
 		{
-			//object.render(light.getShader());
 			activeLight = light;
-			object.render(light.getShader(), this);
+			object.renderAll(light.getShader(), this);
 		}
 		
 		
 		glDepthFunc(GL_LESS);
 		glDepthMask(true);
-		//glEnable(GL_DEPTH_TEST);
 		glDisable(GL_BLEND);
 	}
 

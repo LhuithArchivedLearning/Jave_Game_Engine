@@ -1,0 +1,6 @@
+package com.base.game;
+
+public class LookAtComponent 
+{
+	RenderingEngine renderingEngine;
+}
