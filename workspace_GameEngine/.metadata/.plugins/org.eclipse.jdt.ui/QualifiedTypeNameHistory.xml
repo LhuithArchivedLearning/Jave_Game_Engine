@@ -9,10 +9,7 @@
 <fullyQualifiedTypeName name="java.io.FileReader"/>
 <fullyQualifiedTypeName name="org.lwjgl.opengl.GL20"/>
 <fullyQualifiedTypeName name="javax.xml.crypto.Data"/>
-<fullyQualifiedTypeName name="java.lang.System"/>
-<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
 <fullyQualifiedTypeName name="java.io.File"/>
-<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
 <fullyQualifiedTypeName name="com.base.engine.Vector3f"/>
 <fullyQualifiedTypeName name="java.util.Random"/>
 <fullyQualifiedTypeName name="com.base.engine.Input"/>
@@ -26,7 +23,6 @@
 <fullyQualifiedTypeName name="com.base.engine.rendering.Camera"/>
 <fullyQualifiedTypeName name="com.base.engine.core.Vector2f"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.ForwardAmbient"/>
-<fullyQualifiedTypeName name="java.util.ArrayList"/>
 <fullyQualifiedTypeName name="com.base.engine.core.RenderingEngine"/>
 <fullyQualifiedTypeName name="com.base.engine.components.PointLight"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Attenuation"/>
@@ -41,6 +37,17 @@
 <fullyQualifiedTypeName name="com.base.engine.core.Quaternion"/>
 <fullyQualifiedTypeName name="com.base.engine.components.Camera"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.Window"/>
-<fullyQualifiedTypeName name="java.util.HashMap"/>
 <fullyQualifiedTypeName name="com.base.engine.rendering.RenderingEngine"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.meshLoading.OBJModel"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.meshLoading.IndexedModel"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.resourceManagment.MeshResource"/>
+<fullyQualifiedTypeName name="java.util.HashMap"/>
+<fullyQualifiedTypeName name="java.awt.image.BufferedImage"/>
+<fullyQualifiedTypeName name="javax.imageio.ImageIO"/>
+<fullyQualifiedTypeName name="java.nio.ByteBuffer"/>
+<fullyQualifiedTypeName name="com.base.engine.rendering.resourceManagment.TextureResource"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Time"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+<fullyQualifiedTypeName name="com.base.engine.core.Input"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
 </qualifiedTypeNameHistroy>

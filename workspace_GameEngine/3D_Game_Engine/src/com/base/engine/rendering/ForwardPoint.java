@@ -14,33 +14,7 @@ public class ForwardPoint extends Shader
 	
 	public ForwardPoint()
 	{
-		super();
-		
-		AddVertexShaderFromFile("forward-point.vs.glsl");	
-		AddFragmentShaderFromFile("forward-point.fs.glsl");
-		
-		setAttribLocation("position", 0);
-		setAttribLocation("texCoord", 1);
-		setAttribLocation("normal", 2);
-		
-		compileShader();
-		
-		AddUniform("model");
-		AddUniform("MVP");
-		
-		AddUniform("specularIntensity");
-		AddUniform("specularPower");
-		AddUniform("eyePos");
-		
-		AddUniform("pointLight.base.color");
-		AddUniform("pointLight.base.intensity");
-		AddUniform("pointLight.atten.constant");
-		AddUniform("pointLight.atten.linear");
-		AddUniform("pointLight.atten.exponent");			
-		AddUniform("pointLight.position");
-		AddUniform("pointLight.range");
-		
-		
+		super("forward-point");
 	}
 	
 	

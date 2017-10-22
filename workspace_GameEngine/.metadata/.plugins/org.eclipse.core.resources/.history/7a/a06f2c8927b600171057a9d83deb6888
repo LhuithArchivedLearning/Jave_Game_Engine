@@ -1,0 +1,18 @@
+package com.base.engine.rendering.meshLoading;
+
+public class OBJIndex 
+{
+	public int vertexIndex;
+	public int texCoordIndex;
+	public int normalIndex;
+	
+	@Override
+	public boolean equals(Object obj)
+	{
+		OBJIndex index = (OBJIndex)obj;
+		
+		return vertexIndex == index.vertexIndex;
+					&& texCoordIndex == index.normalIndex
+					&& normalIndex == index.normalIndex;
+	}
+}

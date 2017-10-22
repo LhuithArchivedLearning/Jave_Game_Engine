@@ -1,0 +1,38 @@
+package com.base.engine.rendering.resourceManagment;
+
+import static org.lwjgl.opengl.GL15.*;
+
+public class MeshResource 
+{
+	private int vbo;
+	private int ibo;
+	
+	public MeshResource()
+	{
+		vbo = glGenBuffers();
+		ibo = glGenBuffers();
+	}
+	
+	@Override
+	protected void finalize()
+	{
+		glDeleteBuffers(vbo);
+		glDeleteBuffers(ibo);
+	}
+
+	public int getVbo() {
+		return vbo;
+	}
+
+	public void setVbo(int vbo) {
+		this.vbo = vbo;
+	}
+
+	public int getIbo() {
+		return ibo;
+	}
+
+	public void setIbo(int ibo) {
+		this.ibo = ibo;
+	}
+}

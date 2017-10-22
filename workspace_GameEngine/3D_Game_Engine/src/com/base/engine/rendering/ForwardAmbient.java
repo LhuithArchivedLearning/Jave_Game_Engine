@@ -12,18 +12,7 @@ public class ForwardAmbient extends Shader
 	
 	public ForwardAmbient()
 	{
-		super();
-		
-		AddVertexShaderFromFile("forward-ambient.vs.glsl");	
-		AddFragmentShaderFromFile("forward-ambient.fs.glsl");
-		
-		//setAttribLocation("position", 0);
-		setAttribLocation("texCoord", 1);
-		
-		compileShader();
-		
-		AddUniform("MVP");
-		AddUniform("ambientIntensity");
+		super("forward-ambient");
 	}
 	
 	

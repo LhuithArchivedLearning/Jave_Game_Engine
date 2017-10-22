@@ -1,0 +1,7 @@
+package com.base.engine.rendering.resourceManagment;
+
+public class MeshResource 
+{
+	private int vbo;
+	private int ibo;
+}

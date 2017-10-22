@@ -1,6 +1,6 @@
-#version 330
+#version 120
 
-in vec2 texCoord0;
+varying vec2 texCoord0;
 
 uniform vec3 ambientIntensity;
 uniform sampler2D sampler;

@@ -52,3 +52,6 @@
 1508418495659	Move compilation unit
 1508472457932	Rename local variable 'miniplaneObject2'
 1508554632009	Delete element
+1508560118869	Move compilation unit
+1508567964294	Rename local variable 'indexMap'
+1508570754533	Rename field 'buffers'

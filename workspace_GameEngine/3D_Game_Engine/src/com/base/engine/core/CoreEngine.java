@@ -52,7 +52,7 @@ public class CoreEngine extends Canvas
 		isRunning = true;
 		
 		int frames = 0;
-		long frameCounter = 0;
+		double frameCounter = 0;
 		
 		game.init();
 		
@@ -83,8 +83,8 @@ public class CoreEngine extends Canvas
 				Input.Update();
 				
 				game.update((float)frameTime);
-				
-				if(frameCounter >= 1.0)
+
+				if(frameCounter >= 1.0f)
 				{
 					System.out.println(frames);
 					frames = 0;
@@ -95,9 +95,7 @@ public class CoreEngine extends Canvas
 			if(render)
 			{
 				game.render(renderingEngine);
-				//renderingEngine.render(game.getRootObject());
 				Window.render();
-				
 				frames ++;
 			}
 			else
